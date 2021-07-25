@@ -21,17 +21,25 @@ public class UserController {
     @GetMapping("/findPage")
     public List<User>  findPage(
             @RequestParam(value = "page",defaultValue = "1") Integer page,
-            @RequestParam(value = "rows",defaultValue = "10") Integer pageSize){
+            @RequestParam(value = "rows",defaultValue = "15") Integer pageSize){
         return userService.findPage(page,pageSize);
     }
 
-    @GetMapping(value = "downLoadXlsByJxl",name = "jxl导出excel")
+    /**
+     * 使用jxl导出数据
+     * @param response
+     */
+    @GetMapping(value = "/downLoadXlsByJxl",name = "jxl导出excel")
     public void downLoadXlsByJxl(HttpServletResponse response){
         try {
             userService.downLoadXlsByJxl(response);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    @PostMapping(value = "/uploadExcel",name = "上传用户数据")
+    public void uploadExcel(MultipartFile file) throws Exception{
+        userService.uploadExcel(file);
     }
 
 }
