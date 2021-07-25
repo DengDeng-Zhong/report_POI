@@ -1,0 +1,9 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.77.179.106:3306/report_manager_db
+    username: root
+    password: GTMCmail8800
